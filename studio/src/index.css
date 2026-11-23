@@ -4,44 +4,45 @@
 
 @layer base {
   :root {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
+    --background: 220 20% 4%;
+    --foreground: 210 20% 96%;
 
-    --card: 224 71% 7%;
-    --card-foreground: 213 31% 91%;
+    --card: 220 18% 7%;
+    --card-foreground: 210 20% 96%;
 
-    --popover: 224 71% 6%;
-    --popover-foreground: 215 20.2% 65.1%;
+    --popover: 220 18% 6%;
+    --popover-foreground: 215 15% 70%;
 
-    --primary: 250 84% 67%;
-    --primary-foreground: 210 40% 98%;
+    /* Crisp Emerald Primary Accent */
+    --primary: 158 64% 45%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 222 47% 12%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 15% 12%;
+    --secondary-foreground: 210 20% 96%;
 
-    --muted: 223 47% 11%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 15% 10%;
+    --muted-foreground: 215 15% 65%;
 
-    --accent: 250 90% 64%;
-    --accent-foreground: 210 40% 98%;
+    /* Warm Amber Accent */
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 250 84% 67%;
+    --border: 220 14% 15%;
+    --input: 220 14% 15%;
+    --ring: 158 64% 45%;
 
-    --radius: 0.75rem;
+    --radius: 0.85rem;
   }
 }
 
 body {
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
-  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.08), transparent 40%),
-              radial-gradient(circle at top left, rgba(236, 72, 153, 0.05), transparent 35%),
-              #030712;
+  background: #090c10;
+  color: #f0f3f6;
 }
 
 code, pre {
@@ -50,19 +51,19 @@ code, pre {
 
 /* Custom sleek scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
+  background: #090c10;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(51, 65, 85, 0.8);
+  background: #21262d;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.6);
+  background: #10b981;
 }

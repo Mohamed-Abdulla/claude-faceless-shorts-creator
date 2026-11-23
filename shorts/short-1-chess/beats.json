@@ -8,68 +8,63 @@
     "fps": 30,
     "durationSec": 42
   },
-  "voiceStatus": "elevenlabs:TX3LPaxmHKxFdv7VOQHJ",
+  "voiceStatus": "elevenlabs:None",
   "vo": [
     {
       "beat": "hook",
       "text": "This trap wins millions of games — in just four moves.",
       "start": 0.4,
-      "end": 4.02,
+      "end": 4.03,
       "words": [
         {
           "w": "This",
-          "start": 0.4,
-          "end": 0.644
+          "start": 0.479,
+          "end": 0.667
         },
         {
           "w": "trap",
-          "start": 0.702,
-          "end": 0.98
+          "start": 0.677,
+          "end": 0.945
         },
         {
           "w": "wins",
-          "start": 1.062,
-          "end": 1.306
+          "start": 0.954,
+          "end": 1.222
         },
         {
           "w": "millions",
-          "start": 1.422,
-          "end": 1.84
+          "start": 1.232,
+          "end": 1.579
         },
         {
           "w": "of",
-          "start": 1.886,
-          "end": 1.944
+          "start": 1.588,
+          "end": 1.657
         },
         {
           "w": "games",
-          "start": 2.014,
-          "end": 2.374
-        },
-        {
-          "w": "—",
-          "start": 2.548,
-          "end": 2.606
+          "start": 1.667,
+          "end": 2.053
         },
         {
           "w": "in",
-          "start": 2.676,
-          "end": 2.78
+          "start": 2.292,
+          "end": 2.43
         },
         {
           "w": "just",
-          "start": 2.838,
-          "end": 3.001
+          "start": 2.44,
+          "end": 2.667
         },
         {
           "w": "four",
-          "start": 3.059,
-          "end": 3.256
+          "start": 2.677,
+          "end": 2.865
         },
         {
-          "w": "moves.",
-          "start": 3.314,
-          "end": 4.022
+          "w": "moves",
+          "start": 2.875,
+          "end": 3.351
         }
       ]
     },
@@ -77,22 +72,22 @@
       "beat": "trap",
       "text": "Pawn to e4.",
       "start": 4.1,
-      "end": 5.63,
+      "end": 5.73,
       "words": [
         {
           "w": "Pawn",
-          "start": 4.1,
-          "end": 4.437
+          "start": 4.177,
+          "end": 4.455
         },
         {
           "w": "to",
-          "start": 4.472,
-          "end": 4.541
+          "start": 4.465,
+          "end": 4.572
         },
         {
-          "w": "e4.",
-          "start": 4.622,
-          "end": 5.633
+          "w": "e4",
+          "start": 4.581,
+          "end": 5.081
         }
       ]
     },
@@ -100,67 +95,62 @@
       "beat": "trap",
       "text": "Bishop c4 — aiming at f7, the weakest square in Black's camp.",
       "start": 5.7,
-      "end": 9.6,
+      "end": 9.95,
       "words": [
         {
           "w": "Bishop",
-          "start": 5.7,
-          "end": 5.977
+          "start": 5.777,
+          "end": 6.075
         },
         {
           "w": "c4",
-          "start": 6.031,
-          "end": 6.388
-        },
-        {
-          "w": "—",
-          "start": 6.522,
-          "end": 6.593
+          "start": 6.085,
+          "end": 6.623
         },
         {
           "w": "aiming",
-          "start": 6.781,
-          "end": 6.986
+          "start": 6.825,
+          "end": 7.045
         },
         {
           "w": "at",
-          "start": 7.022,
-          "end": 7.12
+          "start": 7.055,
+          "end": 7.132
         },
         {
-          "w": "f7,",
-          "start": 7.192,
-          "end": 7.647
+          "w": "f7",
+          "start": 7.142,
+          "end": 7.585
         },
         {
           "w": "the",
-          "start": 7.745,
-          "end": 7.825
+          "start": 7.768,
+          "end": 7.864
         },
         {
           "w": "weakest",
-          "start": 7.87,
-          "end": 8.102
+          "start": 7.873,
+          "end": 8.2
         },
         {
           "w": "square",
-          "start": 8.12,
-          "end": 8.335
+          "start": 8.21,
+          "end": 8.508
         },
         {
           "w": "in",
-          "start": 8.352,
-          "end": 8.397
+          "start": 8.518,
+          "end": 8.633
         },
         {
           "w": "Black's",
-          "start": 8.442,
-          "end": 8.665
+          "start": 8.642,
+          "end": 8.941
         },
         {
-          "w": "camp.",
-          "start": 8.701,
-          "end": 9.594
+          "w": "camp",
+          "start": 8.95,
+          "end": 9.287
         }
       ]
     },
@@ -168,17 +158,17 @@
       "beat": "trap",
       "text": "Queen h5.",
       "start": 9.4,
-      "end": 10.69,
+      "end": 11.08,
       "words": [
         {
           "w": "Queen",
-          "start": 9.4,
-          "end": 9.65
+          "start": 9.477,
+          "end": 9.785
         },
         {
-          "w": "h5.",
-          "start": 9.695,
-          "end": 10.686
+          "w": "h5",
+          "start": 9.794,
+          "end": 10.418
         }
       ]
     },
@@ -186,42 +176,37 @@
       "beat": "trap",
       "text": "If Black plays the natural move —",
       "start": 10.6,
-      "end": 12.41,
+      "end": 12.8,
       "words": [
         {
           "w": "If",
-          "start": 10.6,
-          "end": 10.797
+          "start": 10.677,
+          "end": 10.84
         },
         {
           "w": "Black",
-          "start": 10.867,
-          "end": 11.122
+          "start": 10.85,
+          "end": 11.138
         },
         {
           "w": "plays",
-          "start": 11.18,
-          "end": 11.424
+          "start": 11.148,
+          "end": 11.379
         },
         {
           "w": "the",
-          "start": 11.459,
-          "end": 11.529
+          "start": 11.388,
+          "end": 11.446
         },
         {
           "w": "natural",
-          "start": 11.564,
-          "end": 11.877
+          "start": 11.456,
+          "end": 11.783
         },
         {
           "w": "move",
-          "start": 11.947,
-          "end": 12.202
-        },
-        {
-          "w": "—",
-          "start": 12.249,
-          "end": 12.411
+          "start": 11.792,
+          "end": 12.148
         }
       ]
     },
@@ -229,32 +214,32 @@
       "beat": "trap",
       "text": "checkmate. Four moves. Game over.",
       "start": 12.6,
-      "end": 15.36,
+      "end": 16.44,
       "words": [
         {
-          "w": "checkmate.",
-          "start": 12.6,
-          "end": 13.073
+          "w": "checkmate",
+          "start": 12.677,
+          "end": 13.206
         },
         {
           "w": "Four",
-          "start": 13.288,
-          "end": 13.458
+          "start": 13.859,
+          "end": 14.062
         },
         {
-          "w": "moves.",
-          "start": 13.502,
-          "end": 13.85
+          "w": "moves",
+          "start": 14.072,
+          "end": 14.543
         },
         {
           "w": "Game",
-          "start": 14.315,
-          "end": 14.502
+          "start": 15.206,
+          "end": 15.437
         },
         {
-          "w": "over.",
-          "start": 14.529,
-          "end": 15.351
+          "w": "over",
+          "start": 15.446,
+          "end": 15.792
         }
       ]
     },
@@ -262,57 +247,57 @@
       "beat": "quiz",
       "text": "But right here, Black has one move that stops everything.",
       "start": 14.9,
-      "end": 17.86,
+      "end": 18.14,
       "words": [
         {
           "w": "But",
-          "start": 14.9,
-          "end": 15.062
+          "start": 14.977,
+          "end": 15.14
         },
         {
           "w": "right",
-          "start": 15.098,
-          "end": 15.233
+          "start": 15.15,
+          "end": 15.313
         },
         {
-          "w": "here,",
-          "start": 15.269,
-          "end": 15.521
+          "w": "here",
+          "start": 15.323,
+          "end": 15.554
         },
         {
           "w": "Black",
-          "start": 15.71,
-          "end": 15.907
+          "start": 15.736,
+          "end": 15.986
         },
         {
           "w": "has",
-          "start": 15.943,
-          "end": 16.033
+          "start": 15.996,
+          "end": 16.141
         },
         {
           "w": "one",
-          "start": 16.096,
-          "end": 16.276
+          "start": 16.15,
+          "end": 16.332
         },
         {
           "w": "move",
-          "start": 16.312,
-          "end": 16.465
+          "start": 16.342,
+          "end": 16.545
         },
         {
           "w": "that",
-          "start": 16.492,
-          "end": 16.573
+          "start": 16.554,
+          "end": 16.698
         },
         {
           "w": "stops",
-          "start": 16.6,
-          "end": 16.825
+          "start": 16.708,
+          "end": 17.015
         },
         {
-          "w": "everything.",
-          "start": 16.87,
-          "end": 17.85
+          "w": "everything",
+          "start": 17.025,
+          "end": 17.478
         }
       ]
     },
@@ -320,22 +305,22 @@
       "beat": "quiz",
       "text": "Pause. Find it.",
       "start": 17.9,
-      "end": 20.03,
+      "end": 20.31,
       "words": [
         {
-          "w": "Pause.",
-          "start": 17.9,
-          "end": 18.469
+          "w": "Pause",
+          "start": 17.977,
+          "end": 18.496
         },
         {
           "w": "Find",
-          "start": 18.794,
-          "end": 19.038
+          "start": 19.15,
+          "end": 19.458
         },
         {
-          "w": "it.",
-          "start": 19.084,
-          "end": 20.036
+          "w": "it",
+          "start": 19.468,
+          "end": 19.641
         }
       ]
     },
@@ -343,62 +328,57 @@
       "beat": "punish",
       "text": "Pawn g6. It hits the queen — and kills the mate.",
       "start": 20.1,
-      "end": 24.07,
+      "end": 24.28,
       "words": [
         {
           "w": "Pawn",
-          "start": 20.1,
-          "end": 20.377
+          "start": 20.177,
+          "end": 20.465
         },
         {
-          "w": "g6.",
-          "start": 20.448,
-          "end": 21.038
+          "w": "g6",
+          "start": 20.475,
+          "end": 21.196
         },
         {
           "w": "It",
-          "start": 21.288,
-          "end": 21.422
+          "start": 21.86,
+          "end": 21.975
         },
         {
           "w": "hits",
-          "start": 21.466,
-          "end": 21.654
+          "start": 21.985,
+          "end": 22.196
         },
         {
           "w": "the",
-          "start": 21.69,
-          "end": 21.752
+          "start": 22.205,
+          "end": 22.282
         },
         {
           "w": "queen",
-          "start": 21.788,
-          "end": 22.038
-        },
-        {
-          "w": "—",
-          "start": 22.154,
-          "end": 22.19
+          "start": 22.292,
+          "end": 22.629
         },
         {
           "w": "and",
-          "start": 22.351,
-          "end": 22.475
+          "start": 22.812,
+          "end": 22.927
         },
         {
           "w": "kills",
-          "start": 22.538,
-          "end": 22.77
+          "start": 22.937,
+          "end": 23.215
         },
         {
           "w": "the",
-          "start": 22.806,
-          "end": 22.859
+          "start": 23.225,
+          "end": 23.292
         },
         {
-          "w": "mate.",
-          "start": 22.886,
-          "end": 24.065
+          "w": "mate",
+          "start": 23.302,
+          "end": 23.618
         }
       ]
     },
@@ -406,52 +386,47 @@
       "beat": "punish",
       "text": "The queen runs to f3, eyeing f7 again —",
       "start": 23.5,
-      "end": 26.35,
+      "end": 26.68,
       "words": [
         {
           "w": "The",
-          "start": 23.5,
-          "end": 23.638
+          "start": 23.577,
+          "end": 23.683
         },
         {
           "w": "queen",
-          "start": 23.695,
-          "end": 23.914
+          "start": 23.692,
+          "end": 23.981
         },
         {
           "w": "runs",
-          "start": 23.971,
-          "end": 24.19
+          "start": 23.99,
+          "end": 24.202
         },
         {
           "w": "to",
-          "start": 24.235,
-          "end": 24.305
+          "start": 24.212,
+          "end": 24.278
         },
         {
-          "w": "f3,",
-          "start": 24.373,
-          "end": 24.879
+          "w": "f3",
+          "start": 24.288,
+          "end": 24.827
         },
         {
           "w": "eyeing",
-          "start": 24.925,
-          "end": 25.19
+          "start": 25.0,
+          "end": 25.269
         },
         {
           "w": "f7",
-          "start": 25.27,
-          "end": 25.661
+          "start": 25.278,
+          "end": 25.663
         },
         {
           "w": "again",
-          "start": 25.729,
-          "end": 25.983
-        },
-        {
-          "w": "—",
-          "start": 26.005,
-          "end": 26.35
+          "start": 25.673,
+          "end": 26.019
         }
       ]
     },
@@ -459,37 +434,37 @@
       "beat": "punish",
       "text": "but knight f6 slams the door.",
       "start": 26.4,
-      "end": 28.64,
+      "end": 28.71,
       "words": [
         {
           "w": "but",
-          "start": 26.4,
-          "end": 26.584
+          "start": 26.477,
+          "end": 26.622
         },
         {
           "w": "knight",
-          "start": 26.629,
-          "end": 26.825
+          "start": 26.631,
+          "end": 26.862
         },
         {
           "w": "f6",
-          "start": 26.905,
-          "end": 27.261
+          "start": 26.872,
+          "end": 27.275
         },
         {
           "w": "slams",
-          "start": 27.319,
-          "end": 27.628
+          "start": 27.285,
+          "end": 27.622
         },
         {
           "w": "the",
-          "start": 27.663,
-          "end": 27.732
+          "start": 27.631,
+          "end": 27.708
         },
         {
-          "w": "door.",
-          "start": 27.766,
-          "end": 28.65
+          "w": "door",
+          "start": 27.717,
+          "end": 28.054
         }
       ]
     },
@@ -497,27 +472,27 @@
       "beat": "punish",
       "text": "f7 is safe. Forever.",
       "start": 28.7,
-      "end": 30.63,
+      "end": 31.68,
       "words": [
         {
           "w": "f7",
-          "start": 28.7,
-          "end": 29.015
+          "start": 28.777,
+          "end": 29.277
         },
         {
           "w": "is",
-          "start": 29.082,
-          "end": 29.15
+          "start": 29.286,
+          "end": 29.402
         },
         {
-          "w": "safe.",
-          "start": 29.197,
-          "end": 29.56
+          "w": "safe",
+          "start": 29.412,
+          "end": 29.835
         },
         {
-          "w": "Forever.",
-          "start": 29.828,
-          "end": 30.65
+          "w": "Forever",
+          "start": 30.498,
+          "end": 31.027
         }
       ]
     },
@@ -525,27 +500,27 @@
       "beat": "damage",
       "text": "Now count the moves.",
       "start": 30.7,
-      "end": 32.26,
+      "end": 32.46,
       "words": [
         {
           "w": "Now",
-          "start": 30.7,
-          "end": 30.889
+          "start": 30.777,
+          "end": 31.008
         },
         {
           "w": "count",
-          "start": 30.958,
-          "end": 31.137
+          "start": 31.017,
+          "end": 31.257
         },
         {
           "w": "the",
-          "start": 31.167,
-          "end": 31.226
+          "start": 31.268,
+          "end": 31.325
         },
         {
-          "w": "moves.",
-          "start": 31.267,
-          "end": 32.25
+          "w": "moves",
+          "start": 31.335,
+          "end": 31.796
         }
       ]
     },
@@ -553,37 +528,37 @@
       "beat": "damage",
       "text": "White's queen danced around for nothing.",
       "start": 32.3,
-      "end": 34.34,
+      "end": 34.61,
       "words": [
         {
           "w": "White's",
-          "start": 32.3,
-          "end": 32.627
+          "start": 32.377,
+          "end": 32.646
         },
         {
           "w": "queen",
-          "start": 32.671,
-          "end": 32.878
+          "start": 32.656,
+          "end": 32.916
         },
         {
           "w": "danced",
-          "start": 32.943,
-          "end": 33.216
+          "start": 32.925,
+          "end": 33.213
         },
         {
           "w": "around",
-          "start": 33.249,
-          "end": 33.456
+          "start": 33.223,
+          "end": 33.483
         },
         {
           "w": "for",
-          "start": 33.499,
-          "end": 33.587
+          "start": 33.492,
+          "end": 33.588
         },
         {
-          "w": "nothing.",
-          "start": 33.63,
-          "end": 34.35
+          "w": "nothing",
+          "start": 33.598,
+          "end": 33.964
         }
       ]
     },
@@ -591,52 +566,47 @@
       "beat": "damage",
       "text": "Black built an army — every move with tempo.",
       "start": 34.4,
-      "end": 37.26,
+      "end": 37.27,
       "words": [
         {
           "w": "Black",
-          "start": 34.4,
-          "end": 34.681
+          "start": 34.477,
+          "end": 34.746
         },
         {
           "w": "built",
-          "start": 34.731,
-          "end": 34.901
+          "start": 34.756,
+          "end": 34.948
         },
         {
           "w": "an",
-          "start": 34.942,
-          "end": 34.992
+          "start": 34.958,
+          "end": 35.054
         },
         {
           "w": "army",
-          "start": 35.032,
-          "end": 35.253
-        },
-        {
-          "w": "—",
-          "start": 35.434,
-          "end": 35.514
+          "start": 35.064,
+          "end": 35.372
         },
         {
           "w": "every",
-          "start": 35.754,
-          "end": 35.965
+          "start": 35.583,
+          "end": 35.814
         },
         {
           "w": "move",
-          "start": 36.015,
-          "end": 36.176
+          "start": 35.823,
+          "end": 36.044
         },
         {
           "w": "with",
-          "start": 36.196,
-          "end": 36.296
+          "start": 36.054,
+          "end": 36.16
         },
         {
-          "w": "tempo.",
-          "start": 36.337,
-          "end": 37.25
+          "w": "tempo",
+          "start": 36.169,
+          "end": 36.602
         }
       ]
     },
@@ -644,42 +614,42 @@
       "beat": "loop",
       "text": "Strong players never fear the four-move mate…",
       "start": 37.3,
-      "end": 39.84,
+      "end": 40.13,
       "words": [
         {
           "w": "Strong",
-          "start": 37.3,
-          "end": 37.648
+          "start": 37.379,
+          "end": 37.785
         },
         {
           "w": "players",
-          "start": 37.695,
-          "end": 37.985
+          "start": 37.795,
+          "end": 38.151
         },
         {
           "w": "never",
-          "start": 38.02,
-          "end": 38.206
+          "start": 38.161,
+          "end": 38.388
         },
         {
           "w": "fear",
-          "start": 38.264,
-          "end": 38.449
+          "start": 38.398,
+          "end": 38.636
         },
         {
           "w": "the",
-          "start": 38.496,
-          "end": 38.565
+          "start": 38.646,
+          "end": 38.725
         },
         {
           "w": "four-move",
-          "start": 38.612,
-          "end": 39.053
+          "start": 38.734,
+          "end": 39.14
         },
         {
-          "w": "mate…",
-          "start": 39.088,
-          "end": 39.854
+          "w": "mate",
+          "start": 39.15,
+          "end": 39.457
         }
       ]
     },
@@ -687,27 +657,27 @@
       "beat": "loop",
       "text": "they feed on it.",
       "start": 40.2,
-      "end": 41.31,
+      "end": 41.68,
       "words": [
         {
           "w": "they",
-          "start": 40.2,
-          "end": 40.409
+          "start": 40.277,
+          "end": 40.431
         },
         {
           "w": "feed",
-          "start": 40.49,
-          "end": 40.699
+          "start": 40.44,
+          "end": 40.68
         },
         {
           "w": "on",
-          "start": 40.746,
-          "end": 40.827
+          "start": 40.69,
+          "end": 40.825
         },
         {
-          "w": "it.",
-          "start": 40.873,
-          "end": 41.315
+          "w": "it",
+          "start": 40.835,
+          "end": 41.008
         }
       ]
     }
