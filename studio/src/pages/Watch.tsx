@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
   ArrowLeft,
-  Play,
   Trash2,
   Edit3,
   FileText,
   Music,
   Clock,
   HardDrive,
-  Check,
   AlertTriangle,
-  FolderOpen
+  FolderOpen,
+  Maximize,
+  Minimize,
+  Sparkles,
+  Share2
 } from 'lucide-react';
 import { ShortProject, VideoFile } from '../lib/types';
 import { api } from '../lib/api';
 import { RenameModal } from '../components/RenameModal';
+import { PublishingKit } from '../components/PublishingKit';
 
 export const Watch: React.FC = () => {
   const { projectId } = useParams<{ projectId: string }>();
@@ -26,10 +29,31 @@ export const Watch: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const [activeTab, setActiveTab] = useState<'details' | 'script' | 'beats'>('details');
+  const [activeTab, setActiveTab] = useState<'publishing' | 'details' | 'script' | 'beats'>('publishing');
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [renameTarget, setRenameTarget] = useState<{ path: string; name: string } | null>(null);
+
+  // Fullscreen state
+  const playerContainerRef = useRef<HTMLDivElement>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  const handleTogglePortraitFullscreen = () => {
+    if (!playerContainerRef.current) return;
+    if (!document.fullscreenElement) {
+      playerContainerRef.current.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen().catch(() => {});
+    }
+  };
 
   const loadData = async () => {
     try {
@@ -122,17 +146,38 @@ export const Watch: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column: True 9:16 Portrait Player (5 cols) */}
         <div className="lg:col-span-5 flex flex-col items-center">
-          <div className="relative w-full max-w-[360px] aspect-[9/16] bg-slate-950 rounded-3xl overflow-hidden shadow-2xl border border-slate-800/80">
+          {/* Portrait Container - guarantees 9:16 aspect ratio in fullscreen with pillarbox black bars */}
+          <div
+            ref={playerContainerRef}
+            className={`relative w-full max-w-[360px] aspect-[9/16] bg-black rounded-3xl overflow-hidden shadow-2xl border border-slate-800/80 flex items-center justify-center ${
+              isFullscreen ? 'max-w-none w-screen h-screen rounded-none border-none' : ''
+            }`}
+          >
             {activeVideo ? (
-              <video
-                key={activeVideo.path}
-                src={api.getMediaUrl(activeVideo.path)}
-                controls
-                autoPlay
-                loop
-                playsInline
-                className="w-full h-full object-cover"
-              />
+              <>
+                <video
+                  key={activeVideo.path}
+                  src={api.getMediaUrl(activeVideo.path)}
+                  controls
+                  autoPlay
+                  loop
+                  playsInline
+                  className="w-full h-full object-contain mx-auto"
+                  style={{
+                    maxHeight: isFullscreen ? '100vh' : undefined,
+                    maxWidth: isFullscreen ? 'calc(100vh * 9 / 16)' : undefined,
+                  }}
+                />
+
+                {/* Explicit Portrait Mode Fullscreen Toggle */}
+                <button
+                  onClick={handleTogglePortraitFullscreen}
+                  className="absolute top-3 right-3 z-30 p-2 text-white bg-black/70 hover:bg-black/90 border border-white/20 rounded-xl backdrop-blur-md transition-all shadow-lg"
+                  title={isFullscreen ? 'Exit Portrait Fullscreen' : 'Fullscreen (Locked 9:16 Portrait)'}
+                >
+                  {isFullscreen ? <Minimize className="w-4 h-4" /> : <Maximize className="w-4 h-4" />}
+                </button>
+              </>
             ) : (
               <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center text-slate-600">
                 <FolderOpen className="w-12 h-12 mb-3 stroke-1" />
@@ -144,7 +189,7 @@ export const Watch: React.FC = () => {
 
           {/* Quick Renders Selector if project has multiple video files */}
           {project.videos.length > 1 && (
-            <div className="w-full max-w-[360px] mt-4 bg-slate-900/90 border border-slate-800 p-3 rounded-2xl">
+            <div className="w-full max-w-[360px] mt-4 bg-[#0d1117] border border-slate-800 p-3 rounded-2xl">
               <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2">
                 Available Renders ({project.videos.length})
               </span>
@@ -168,10 +213,10 @@ export const Watch: React.FC = () => {
           )}
         </div>
 
-        {/* Right Column: Metadata, Script, Beats, Actions (7 cols) */}
-        <div className="lg:col-span-7 bg-slate-900/90 border border-slate-800/80 rounded-3xl p-6 sm:p-8 shadow-xl">
+        {/* Right Column: Publishing Kit, Metadata, Script, Beats (7 cols) */}
+        <div className="lg:col-span-7 bg-[#0d1117] border border-slate-800/80 rounded-3xl p-6 sm:p-8 shadow-xl">
           {/* Header Title */}
-          <div className="border-b border-slate-800/80 pb-5 mb-6">
+          <div className="border-b border-slate-800 pb-5 mb-6">
             <div className="flex items-center gap-2 mb-2">
               <span className="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-md">
                 100% Free TSX Short
@@ -186,11 +231,11 @@ export const Watch: React.FC = () => {
 
             {activeVideo && (
               <div className="flex flex-wrap items-center gap-3 mt-3 text-xs text-slate-400">
-                <span className="bg-slate-950 px-3 py-1 rounded-xl border border-slate-800 flex items-center gap-1.5">
+                <span className="bg-[#090c10] px-3 py-1 rounded-xl border border-slate-800 flex items-center gap-1.5">
                   <HardDrive className="w-3.5 h-3.5 text-emerald-400" />
                   <span>Size: <strong className="text-white">{activeVideo.sizeFormatted}</strong></span>
                 </span>
-                <span className="bg-slate-950 px-3 py-1 rounded-xl border border-slate-800 flex items-center gap-1.5">
+                <span className="bg-[#090c10] px-3 py-1 rounded-xl border border-slate-800 flex items-center gap-1.5">
                   <Clock className="w-3.5 h-3.5 text-amber-400" />
                   <span>Updated: {new Date(activeVideo.updatedAt).toLocaleTimeString()}</span>
                 </span>
@@ -199,10 +244,21 @@ export const Watch: React.FC = () => {
           </div>
 
           {/* Tab Navigation */}
-          <div className="flex items-center gap-2 border-b border-slate-800 mb-6 pb-2">
+          <div className="flex items-center gap-2 border-b border-slate-800 mb-6 pb-2 overflow-x-auto">
+            <button
+              onClick={() => setActiveTab('publishing')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl transition-all whitespace-nowrap ${
+                activeTab === 'publishing'
+                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <span>Publishing Kit (YouTube & IG)</span>
+            </button>
             <button
               onClick={() => setActiveTab('details')}
-              className={`flex items-center gap-2 px-3 py-1.5 text-xs font-bold rounded-xl transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl transition-all whitespace-nowrap ${
                 activeTab === 'details'
                   ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20'
                   : 'text-slate-400 hover:text-white'
@@ -212,33 +268,35 @@ export const Watch: React.FC = () => {
             </button>
             <button
               onClick={() => setActiveTab('script')}
-              className={`flex items-center gap-2 px-3 py-1.5 text-xs font-bold rounded-xl transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl transition-all whitespace-nowrap ${
                 activeTab === 'script'
                   ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
               <FileText className="w-3.5 h-3.5" />
-              <span>Script ({project.hasScript ? 'Ready' : 'None'})</span>
+              <span>Script</span>
             </button>
             <button
               onClick={() => setActiveTab('beats')}
-              className={`flex items-center gap-2 px-3 py-1.5 text-xs font-bold rounded-xl transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl transition-all whitespace-nowrap ${
                 activeTab === 'beats'
                   ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
               <Music className="w-3.5 h-3.5" />
-              <span>Beats Timings ({project.beatsCount})</span>
+              <span>Beats ({project.beatsCount})</span>
             </button>
           </div>
 
           {/* Tab Body */}
           <div className="mb-6">
+            {activeTab === 'publishing' && <PublishingKit project={project} />}
+
             {activeTab === 'details' && (
               <div className="space-y-4">
-                <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800">
+                <div className="bg-[#090c10] p-4 rounded-2xl border border-slate-800">
                   <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
                     Direct Workspace Path
                   </span>
@@ -248,13 +306,13 @@ export const Watch: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="bg-slate-950 p-3.5 rounded-2xl border border-slate-800">
+                  <div className="bg-[#090c10] p-3.5 rounded-2xl border border-slate-800">
                     <span className="text-xs text-slate-400">Audio Stem</span>
                     <p className="font-semibold text-white mt-1">
                       {project.hasVoice ? 'Neural Voice Generated' : 'No Voice Stem'}
                     </p>
                   </div>
-                  <div className="bg-slate-950 p-3.5 rounded-2xl border border-slate-800">
+                  <div className="bg-[#090c10] p-3.5 rounded-2xl border border-slate-800">
                     <span className="text-xs text-slate-400">Beats Contract</span>
                     <p className="font-semibold text-white mt-1">
                       {project.beatsCount > 0 ? `${project.beatsCount} Scenes Defined` : 'None'}
@@ -265,7 +323,7 @@ export const Watch: React.FC = () => {
             )}
 
             {activeTab === 'script' && (
-              <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 max-h-72 overflow-y-auto">
+              <div className="bg-[#090c10] p-4 rounded-2xl border border-slate-800 max-h-72 overflow-y-auto">
                 {project.script ? (
                   <pre className="text-xs text-slate-300 whitespace-pre-wrap font-mono leading-relaxed">
                     {project.script}
@@ -277,7 +335,7 @@ export const Watch: React.FC = () => {
             )}
 
             {activeTab === 'beats' && (
-              <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 max-h-72 overflow-y-auto">
+              <div className="bg-[#090c10] p-4 rounded-2xl border border-slate-800 max-h-72 overflow-y-auto">
                 {project.beats ? (
                   <pre className="text-xs text-emerald-300 whitespace-pre-wrap font-mono leading-relaxed">
                     {JSON.stringify(project.beats, null, 2)}
