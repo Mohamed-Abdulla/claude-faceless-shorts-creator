@@ -1,17 +1,53 @@
-# claude-faceless-shorts-creator
+# claude-faceless-shorts-creator (Antigravity & Free Voice Edition)
 
-**A faceless YouTube-Shorts factory you drive with [Claude Code](https://claude.com/claude-code).**
+**A faceless YouTube-Shorts factory you drive with [Google Antigravity](https://antigravity.google) or [Claude Code](https://claude.com/claude-code).**
 Three production tracks in one repo — you just describe the video, and the right pipeline runs:
 
-| You say… | Track | The pixels |
-|---|---|---|
-| *"make a short about the ×11 trick"* | **TSX** (`/make-short`) | 100% code — a [Remotion](https://remotion.dev) composition, no footage, no stock |
-| *"make an AI video short with blue-man"* | **Generative** (`/make-ai-short`) | a fal video model animating a **locked recurring character** |
-| *"make a vox-style short about coffee"* | **Collage** (`/make-vox`) | Vox-documentary paper collage — AI-image layers, die-cuts, a traveling camera |
+| You say… | Track | The pixels | Cost |
+|---|---|---|---|
+| *"make a short about X"* | **TSX** (`make-short`) | 100% code — [Remotion](https://remotion.dev) (React/TSX), no stock footage | **$0.00 (FREE)** |
+| *"make an AI video short with blue-man"* | **Generative** (`make-ai-short`) | Fal.ai video model animating a **locked recurring character** | Paid (API credits) |
+| *"make a vox-style short about coffee"* | **Collage** (`make-vox`) | Vox-documentary paper collage — AI layers, die-cuts, traveling camera | Freemium / Paid |
 
-Every track shares the same backbone: ElevenLabs voice with **word-exact synced captions**,
-frame-by-frame QA at phone scale, a reusable self-growing SFX/music library, seamless
-frame-0==last-frame loops, and no dated engagement-CTA outros.
+Every track shares the same backbone: **Word-exact synced captions**, free neural voiceover or ElevenLabs, frame-by-frame QA at phone scale, a reusable self-growing SFX/music library, seamless frame-0==last-frame loops, and no dated engagement-CTA outros.
+
+---
+
+## ⚡ Antigravity & 100% Free Quickstart
+
+This workspace has been pre-configured for **Google Antigravity** with **100% Free Edge-TTS Voiceovers** (no credit card or ElevenLabs API key required).
+
+### 1. Environment & Dependencies (Already Done)
+- **Node dependencies**: Installed inside `remotion/` (`npm install`).
+- **Python virtualenv**: Configured at `.venv` with `edge-tts` installed.
+- **Agent skills**: Located in `.agents/skills/` and `.claude/skills/`.
+
+### 2. How to Generate Free Voiceovers
+The voice generation tool `tools/gen_voice.py` now supports free Microsoft Edge Neural TTS out-of-the box:
+```bash
+# Auto-detects: uses free Edge-TTS if no ELEVENLABS_API_KEY is found in .env:
+.venv/bin/python tools/gen_voice.py --beats shorts/short-1-chess/beats.json
+
+# Explicitly use free Edge-TTS with ChristopherNeural (deep narrator):
+.venv/bin/python tools/gen_voice.py --beats shorts/short-1-chess/beats.json --engine edge --voice en-US-ChristopherNeural
+
+# Available popular free voices:
+# - en-US-ChristopherNeural (Deep, clear narration - Default)
+# - en-US-GuyNeural (Casual, confident male)
+# - en-US-JennyNeural (Natural female narrator)
+# - en-GB-RyanNeural (British documentary tone)
+```
+
+### 3. Workflow to Create a New Short
+1. **Plan & Script**: Pick or provide a topic. The agent creates `shorts/short-N-<topic>/script.md` and `beats.json`.
+2. **Generate Voice (Free)**: Run `tools/gen_voice.py --beats shorts/short-N-<topic>/beats.json` to generate `voice.wav` and exact word-level timestamp boundaries.
+3. **Build Remotion Shot**: Build `remotion/src/shots/short-N/ShortN<Name>.tsx`.
+4. **Register**: Run `cd remotion && npm run gen`.
+5. **Preview**: Run `cd remotion && npm run studio` to inspect live in the browser.
+6. **Render MP4**: Run `cd remotion && npx remotion render <ShotName> ../shorts/short-N-<topic>/output/final.mp4`.
+7. **Add Audio & SFX**: Run `python tools/mix_sfx.py` to mix the audio bed with auto-ducking.
+
+---
 
 ## 📖 Read the guide
 

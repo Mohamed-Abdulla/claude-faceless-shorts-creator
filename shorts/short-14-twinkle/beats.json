@@ -1,0 +1,265 @@
+{
+  "id": "short-14-twinkle",
+  "title": "Twinkle Twinkle Little Star (Children Rhyme)",
+  "composition": "Short14Twinkle",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 34
+  },
+  "vo": [
+    {
+      "beat": "star_intro",
+      "text": "Twinkle, twinkle, little star,",
+      "start": 0.5,
+      "end": 4.08,
+      "words": [
+        {
+          "w": "Twinkle",
+          "start": 0.6,
+          "end": 1.237
+        },
+        {
+          "w": "twinkle",
+          "start": 1.5,
+          "end": 2.1
+        },
+        {
+          "w": "little",
+          "start": 2.363,
+          "end": 2.675
+        },
+        {
+          "w": "star",
+          "start": 2.688,
+          "end": 3.238
+        }
+      ]
+    },
+    {
+      "beat": "wonder",
+      "text": "How I wonder what you are!",
+      "start": 4.8,
+      "end": 7.39,
+      "words": [
+        {
+          "w": "How",
+          "start": 4.9,
+          "end": 5.163
+        },
+        {
+          "w": "I",
+          "start": 5.175,
+          "end": 5.288
+        },
+        {
+          "w": "wonder",
+          "start": 5.3,
+          "end": 5.763
+        },
+        {
+          "w": "what",
+          "start": 5.775,
+          "end": 5.975
+        },
+        {
+          "w": "you",
+          "start": 5.988,
+          "end": 6.163
+        },
+        {
+          "w": "are",
+          "start": 6.175,
+          "end": 6.537
+        }
+      ]
+    },
+    {
+      "beat": "up_high",
+      "text": "Up above the world so high,",
+      "start": 9.5,
+      "end": 12.36,
+      "words": [
+        {
+          "w": "Up",
+          "start": 9.6,
+          "end": 9.812
+        },
+        {
+          "w": "above",
+          "start": 9.825,
+          "end": 10.213
+        },
+        {
+          "w": "the",
+          "start": 10.225,
+          "end": 10.35
+        },
+        {
+          "w": "world",
+          "start": 10.363,
+          "end": 10.775
+        },
+        {
+          "w": "so",
+          "start": 10.788,
+          "end": 11.075
+        },
+        {
+          "w": "high",
+          "start": 11.087,
+          "end": 11.512
+        }
+      ]
+    },
+    {
+      "beat": "diamond",
+      "text": "Like a diamond in the sky!",
+      "start": 14.3,
+      "end": 16.92,
+      "words": [
+        {
+          "w": "Like",
+          "start": 14.4,
+          "end": 14.687
+        },
+        {
+          "w": "a",
+          "start": 14.7,
+          "end": 14.8
+        },
+        {
+          "w": "diamond",
+          "start": 14.812,
+          "end": 15.337
+        },
+        {
+          "w": "in",
+          "start": 15.35,
+          "end": 15.488
+        },
+        {
+          "w": "the",
+          "start": 15.5,
+          "end": 15.587
+        },
+        {
+          "w": "sky",
+          "start": 15.6,
+          "end": 16.063
+        }
+      ]
+    },
+    {
+      "beat": "sun_gone",
+      "text": "When the blazing sun is gone,",
+      "start": 19.3,
+      "end": 22.16,
+      "words": [
+        {
+          "w": "When",
+          "start": 19.4,
+          "end": 19.625
+        },
+        {
+          "w": "the",
+          "start": 19.638,
+          "end": 19.738
+        },
+        {
+          "w": "blazing",
+          "start": 19.75,
+          "end": 20.312
+        },
+        {
+          "w": "sun",
+          "start": 20.325,
+          "end": 20.675
+        },
+        {
+          "w": "is",
+          "start": 20.687,
+          "end": 20.85
+        },
+        {
+          "w": "gone",
+          "start": 20.862,
+          "end": 21.312
+        }
+      ]
+    },
+    {
+      "beat": "little_light",
+      "text": "Now you show your little light,",
+      "start": 24.3,
+      "end": 27.09,
+      "words": [
+        {
+          "w": "Now",
+          "start": 24.4,
+          "end": 24.738
+        },
+        {
+          "w": "you",
+          "start": 24.75,
+          "end": 24.962
+        },
+        {
+          "w": "show",
+          "start": 24.975,
+          "end": 25.287
+        },
+        {
+          "w": "your",
+          "start": 25.3,
+          "end": 25.525
+        },
+        {
+          "w": "little",
+          "start": 25.538,
+          "end": 25.863
+        },
+        {
+          "w": "light",
+          "start": 25.875,
+          "end": 26.237
+        }
+      ]
+    },
+    {
+      "beat": "night_loop",
+      "text": "Twinkle, twinkle, through the night!",
+      "start": 29.3,
+      "end": 32.88,
+      "words": [
+        {
+          "w": "Twinkle",
+          "start": 29.4,
+          "end": 30.05
+        },
+        {
+          "w": "twinkle",
+          "start": 30.312,
+          "end": 30.912
+        },
+        {
+          "w": "through",
+          "start": 31.187,
+          "end": 31.45
+        },
+        {
+          "w": "the",
+          "start": 31.463,
+          "end": 31.563
+        },
+        {
+          "w": "night",
+          "start": 31.575,
+          "end": 32.025
+        }
+      ]
+    }
+  ],
+  "voiceStatus": "elevenlabs:en-US-AnaNeural"
+}

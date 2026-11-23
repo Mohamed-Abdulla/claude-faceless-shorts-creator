@@ -7,6 +7,9 @@ remotion/out/
 __pycache__/
 *.pyc
 venv/
+.venv/
+*.mp4
+*.wav
 
 # heavy regenerable per-short artifacts:
 # voice/ = cached ElevenLabs TTS lines, output/ = rendered videos.
