@@ -25,7 +25,7 @@ export const Gallery: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   // Filters
-  const [activeTrack, setActiveTrack] = useState<string>('all');
+  const [statusFilter, setStatusFilter] = useState<'all' | 'rendered' | 'draft'>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   // Modals state
@@ -54,13 +54,18 @@ export const Gallery: React.FC = () => {
   // Filtered projects
   const filteredProjects = useMemo(() => {
     return projects.filter((p) => {
-      const matchTrack = activeTrack === 'all' || p.trackType === activeTrack;
+      const matchStatus =
+        statusFilter === 'all'
+          ? true
+          : statusFilter === 'rendered'
+          ? p.videos.length > 0
+          : p.videos.length === 0;
       const matchSearch =
         p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (p.script && p.script.toLowerCase().includes(searchQuery.toLowerCase()));
-      return matchTrack && matchSearch;
+      return matchStatus && matchSearch;
     });
-  }, [projects, activeTrack, searchQuery]);
+  }, [projects, statusFilter, searchQuery]);
 
   // Aggregate stats
   const totalVideos = useMemo(() => {
@@ -96,7 +101,7 @@ export const Gallery: React.FC = () => {
               Faceless Shorts Library
             </h1>
             <p className="text-sm text-slate-400 mt-1 max-w-xl">
-              Inspect, preview, stream, rename, and manage all your generated shorts across Remotion TSX, Generative Fal AI, and Vox Collage tracks.
+              Inspect, preview, stream, rename, and manage all your 100% free Remotion TSX shorts.
             </p>
           </div>
 
@@ -123,50 +128,39 @@ export const Gallery: React.FC = () => {
 
       {/* Filter and Search Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-        {/* Track Filter Tabs */}
+        {/* Status Filter Tabs */}
         <div className="flex items-center gap-1.5 p-1 bg-slate-900/90 rounded-2xl border border-slate-800">
           <button
-            onClick={() => setActiveTrack('all')}
+            onClick={() => setStatusFilter('all')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-              activeTrack === 'all'
+              statusFilter === 'all'
                 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
-            All Tracks
+            All Shorts ({projects.length})
           </button>
           <button
-            onClick={() => setActiveTrack('tsx')}
+            onClick={() => setStatusFilter('rendered')}
             className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-              activeTrack === 'tsx'
+              statusFilter === 'rendered'
                 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
             <Video className="w-3.5 h-3.5" />
-            <span>TSX Remotion</span>
+            <span>Rendered ({projects.filter((p) => p.videos.length > 0).length})</span>
           </button>
           <button
-            onClick={() => setActiveTrack('ai')}
+            onClick={() => setStatusFilter('draft')}
             className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-              activeTrack === 'ai'
+              statusFilter === 'draft'
                 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
-            <Bot className="w-3.5 h-3.5" />
-            <span>AI Generative</span>
-          </button>
-          <button
-            onClick={() => setActiveTrack('vox')}
-            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-              activeTrack === 'vox'
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                : 'text-slate-400 hover:text-white'
-            }`}
-          >
-            <Layers className="w-3.5 h-3.5" />
-            <span>Vox Collage</span>
+            <FolderOpen className="w-3.5 h-3.5" />
+            <span>Drafts ({projects.filter((p) => p.videos.length === 0).length})</span>
           </button>
         </div>
 

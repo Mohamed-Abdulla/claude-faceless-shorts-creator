@@ -29,10 +29,9 @@ function facelessStudioPlugin(): Plugin {
         // 1. GET /api/shorts: List all projects and their videos
         if (url.pathname === '/api/shorts' && req.method === 'GET') {
           try {
+            // Only focus on 100% free TSX Remotion shorts
             const tracks = [
               { dir: 'shorts', type: 'tsx' },
-              { dir: 'ai-shorts', type: 'ai' },
-              { dir: 'vox-shorts', type: 'vox' },
             ];
 
             const projects: any[] = [];
@@ -267,7 +266,7 @@ function facelessStudioPlugin(): Plugin {
           }
         }
 
-        // 5. GET /api/templates: Custom Prompt and Script Presets
+        // 5. GET /api/templates: Custom TSX Prompt and Script Presets
         if (url.pathname === '/api/templates' && req.method === 'GET') {
           const templates = [
             {
@@ -287,28 +286,28 @@ function facelessStudioPlugin(): Plugin {
               description: 'Animated terminal, syntax-highlighted code blocks, Neumorphic UI cards, fast pace.',
               defaultTopic: 'How to use TypeScript satisfies operator for safe type narrowing',
               sampleScript: '# TS satisfies operator\n\nStop using "as" casting in TypeScript.\nHere is how satisfies keeps full type safety with zero runtime bugs.',
-              suggestedVoice: 'en-US-GuyNeural',
-              suggestedMusic: 'media/library/music/clips/chill-lofi.mp3',
+              suggestedVoice: 'en-US-GuyNeural (tech narrator)',
+              suggestedMusic: 'media/library/music/clips/tech-pulse.mp3',
             },
             {
-              id: 'vox-documentary',
-              name: 'Vox-Style Collage Explainer',
-              track: 'vox',
-              description: 'Layered cutout photographs, paper textures, 3D camera parallax, and archival graphics.',
-              defaultTopic: 'Why the world is running out of sand',
-              sampleScript: '# The Global Sand Shortage\n\nSand is the second most consumed natural resource on Earth.\nAnd yet, desert sand is completely useless for construction.',
-              suggestedVoice: 'en-US-ChristopherNeural',
-              suggestedMusic: 'media/library/music/clips/investigative-pulse.mp3',
+              id: 'math-tricks',
+              name: 'Rapid Mental Math',
+              track: 'tsx',
+              description: 'Split digits, drop in middle, interactive pause challenge, bold gold typography.',
+              defaultTopic: 'The ×11 Mental Math Trick in three seconds',
+              sampleScript: '# The ×11 Trick\n\nSeventy-two times eleven. Two seconds. No calculator.\nSplit the seven and the two. Add them — nine. Drop it in the middle.\nSeven ninety-two. Done.',
+              suggestedVoice: 'en-US-ChristopherNeural (authoritative)',
+              suggestedMusic: 'media/library/music/clips/tech-pulse.mp3',
             },
             {
-              id: 'ai-philosophy',
-              name: 'AI Video Story / Philosophy',
-              track: 'ai',
-              description: 'Locked recurring character (e.g. blue man), generative fal video clips, meditative narrative.',
-              defaultTopic: 'The paradox of modern hyper-connectivity and loneliness',
-              sampleScript: '# The Connected Solitude\n\nWe have never been closer to everything,\nyet farther from everyone.',
-              suggestedVoice: 'en-US-BrianNeural',
-              suggestedMusic: 'media/library/music/clips/cinematic-pad.mp3',
+              id: 'chess-tactics',
+              name: 'Chess Trap & Tactics',
+              track: 'tsx',
+              description: 'Interactive animated chess board, tactical arrows, rewind timer, punish moves.',
+              defaultTopic: 'How to punish the 4-Move Scholar Mate trap',
+              sampleScript: '# The 4-Move Checkmate Punished\n\nThis trap wins millions of games in just four moves.\nBishop c4, Queen h5.\nRight here, pawn to g6 stops everything and wins tempo.',
+              suggestedVoice: 'en-US-ChristopherNeural (authoritative)',
+              suggestedMusic: 'media/library/music/clips/lofi-warm.mp3',
             },
           ];
 

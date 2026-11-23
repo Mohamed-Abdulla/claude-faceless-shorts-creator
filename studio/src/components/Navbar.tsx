@@ -24,7 +24,7 @@ export const Navbar: React.FC<{ onRefresh?: () => void; isRefreshing?: boolean }
               </span>
             </div>
             <p className="text-xs text-slate-400 hidden sm:block">
-              Remotion • Fal AI • Vox Collage Shorts Manager
+              100% Free TSX Remotion Shorts Manager
             </p>
           </div>
         </div>

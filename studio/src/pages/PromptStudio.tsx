@@ -46,13 +46,7 @@ export const PromptStudio: React.FC = () => {
   };
 
   // Generate the Master Antigravity Prompt
-  const antigravityPrompt = `Create a new ${
-    selectedTrack === 'tsx'
-      ? '100% TSX Remotion short (/make-short)'
-      : selectedTrack === 'ai'
-      ? 'Generative Fal AI short with recurring character (/make-ai-short)'
-      : 'Vox-Style layered collage short (/make-vox)'
-  }:
+  const antigravityPrompt = `Create a new 100% TSX Remotion short (/make-short):
 Topic: "${topic}"
 Duration: ~${durationSec} seconds
 Voice Engine: Free Edge-TTS (${voiceTone}) with word-level boundaries
@@ -121,50 +115,6 @@ cd remotion && npx remotion still ${shortSlug.replace(/-/g, '')} ../shorts/${sho
 
           {/* Form Settings */}
           <div className="bg-slate-900/90 border border-slate-800/80 p-6 rounded-3xl shadow-xl space-y-5">
-            {/* Track Selector */}
-            <div>
-              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-                Production Track
-              </label>
-              <div className="grid grid-cols-3 gap-2">
-                <button
-                  onClick={() => setSelectedTrack('tsx')}
-                  className={`p-3 rounded-2xl text-xs font-bold flex flex-col items-center gap-1.5 transition-all ${
-                    selectedTrack === 'tsx'
-                      ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
-                      : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
-                  }`}
-                >
-                  <Video className="w-4 h-4" />
-                  <span>TSX 100%</span>
-                </button>
-
-                <button
-                  onClick={() => setSelectedTrack('ai')}
-                  className={`p-3 rounded-2xl text-xs font-bold flex flex-col items-center gap-1.5 transition-all ${
-                    selectedTrack === 'ai'
-                      ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
-                      : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
-                  }`}
-                >
-                  <Bot className="w-4 h-4" />
-                  <span>Fal AI</span>
-                </button>
-
-                <button
-                  onClick={() => setSelectedTrack('vox')}
-                  className={`p-3 rounded-2xl text-xs font-bold flex flex-col items-center gap-1.5 transition-all ${
-                    selectedTrack === 'vox'
-                      ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
-                      : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
-                  }`}
-                >
-                  <Layers className="w-4 h-4" />
-                  <span>Vox Collage</span>
-                </button>
-              </div>
-            </div>
-
             {/* Topic Input */}
             <div>
               <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
