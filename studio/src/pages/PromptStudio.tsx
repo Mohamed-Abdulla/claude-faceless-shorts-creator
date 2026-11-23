@@ -5,10 +5,10 @@ import {
   Check,
   Terminal,
   FileText,
-  Music,
-  Sliders,
-  Send,
-  Volume2
+  Volume2,
+  Brain,
+  Zap,
+  Globe
 } from 'lucide-react';
 import { PromptTemplate } from '../lib/types';
 import { api } from '../lib/api';
@@ -16,12 +16,14 @@ import { api } from '../lib/api';
 export const PromptStudio: React.FC = () => {
   const [templates, setTemplates] = useState<PromptTemplate[]>([]);
   const [topic, setTopic] = useState('Secret Animal Language: What Dogs and Cats Actually Say to Each Other');
-  const [voiceTone, setVoiceTone] = useState('en-US-GuyNeural');
+  const [voiceTone, setVoiceTone] = useState('en-US-AvaMultilingualNeural');
   const [durationSec, setDurationSec] = useState(35);
   const [customInstructions, setCustomInstructions] = useState(
     'Warm earthy colors (golden sun #FDE047, emerald meadow #10B981, warm amber #F59E0B) with NO purplish hues. Chunky Fredoka captions at y=1420 with zero overlap.'
   );
 
+  // Active prompt mode tab on the right
+  const [promptMode, setPromptMode] = useState<'antigravity' | 'chatgpt' | 'cli'>('antigravity');
   const [copiedSection, setCopiedSection] = useState<string | null>(null);
 
   useEffect(() => {
@@ -41,7 +43,7 @@ export const PromptStudio: React.FC = () => {
     setTimeout(() => setCopiedSection(null), 2000);
   };
 
-  // Generate the Master Antigravity Prompt
+  // 1. Direct Antigravity Prompt
   const antigravityPrompt = `Create a new 100% TSX Remotion short (/make-short):
 Topic: "${topic}"
 Duration: ~${durationSec} seconds
@@ -53,7 +55,41 @@ Style & Color Palette:
 - Safe zones: Captions strictly at y=1420-1620, zero text overlap with background elements
 - End with seamless frame-0 infinite loop and no CTA outro.`;
 
-  // Generate CLI Command
+  // 2. Meta-Prompt Template for ChatGPT / Claude AI
+  const chatGptMetaPrompt = `You are an elite video director and scriptwriter for viral vertical YouTube Shorts & Instagram Reels (1080x1920, 30fps).
+I produce videos using an autonomous code-based Remotion TSX pipeline powered by Google Antigravity.
+
+MY TOPIC: "${topic}"
+TARGET DURATION: ~${durationSec} seconds (approximately ${Math.round(durationSec * 2.7)} words of speech)
+VOICE ENGINE: Microsoft Edge-TTS (${voiceTone})
+
+Please generate an ultra-detailed, cinema-grade video production plan that I can feed directly into Antigravity. Structure your response with these exact sections:
+
+1. VIRAL TITLE & HOOK:
+- A high-converting curiosity title (under 50 characters)
+- The opening 3-second hook that stops the scroll immediately.
+
+2. SIX-BEAT TIMED SCENE BREAKDOWN (Exact word-for-word voiceover script):
+- Beat 1 (0s–4s): HOOK — Immediate visual surprise & curiosity statement
+- Beat 2 (4s–10s): SETUP — Introduce the subject or problem clearly
+- Beat 3 (10s–18s): CORE INSIGHT — The visual demonstration / main story twist
+- Beat 4 (18s–24s): ACTION / CLIMAX — Key reaction, turning point, or challenge
+- Beat 5 (24s–28s): TAKEAWAY — Satisfying conclusion / revelation
+- Beat 6 (28s–${durationSec}s): SEAMLESS LOOP — Final frame visually and vocally loops back into Beat 1 with NO call-to-action outro.
+
+3. COLOR PALETTE & VISUAL ASSETS (Zero purplish/bluish tones):
+- Warm earthy background palette (Golden Sun, Emerald Meadows, Warm Amber, or Deep Obsidian)
+- Describe 2D/2.5D SVG animated characters or interactive props (bounce, blink, wag/wiggle, facial visemes)
+- Subtitle zone: Strictly at safe zone y = 1420px to 1620px (leaving the middle stage clear with zero text overlap).
+
+4. AUDIO SPECIFICATION:
+- Voice ID: ${voiceTone}
+- Background Music style: (e.g. playful acoustic plucked strings, warm lo-fi beat, cinematic soft pad)
+
+5. FINAL SYNTHESIZED ANTIGRAVITY PROMPT:
+Wrap everything into a single clean copy-paste prompt formatted for Antigravity.`;
+
+  // 3. CLI Command
   const shortSlug = topic
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
@@ -80,7 +116,7 @@ cd remotion && npx remotion still ${shortSlug.replace(/-/g, '')} ../shorts/${sho
           Custom Prompt Generator
         </h1>
         <p className="text-sm text-slate-400 mt-1 max-w-2xl">
-          Craft tailored prompts for Antigravity or execute them via the local CLI pipeline with 100% free neural voices.
+          Craft tailored prompts directly for Antigravity, or generate ultra-detailed video specifications via ChatGPT / Claude AI.
         </p>
       </div>
 
@@ -124,15 +160,15 @@ cd remotion && npx remotion still ${shortSlug.replace(/-/g, '')} ../shorts/${sho
               />
             </div>
 
-            {/* Voice Model with 20+ Free Neural Voices */}
+            {/* Voice Model with Tamil, Indian Regional & Global Voices */}
             <div>
               <div className="flex items-center justify-between mb-2">
                 <label className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
                   <Volume2 className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Free Neural Voice ({voiceTone})</span>
+                  <span>Free Neural Voice</span>
                 </label>
                 <span className="text-[10px] text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                  Instant Streaming
+                  Tamil & Global Ready
                 </span>
               </div>
 
@@ -141,7 +177,24 @@ cd remotion && npx remotion still ${shortSlug.replace(/-/g, '')} ../shorts/${sho
                 onChange={(e) => setVoiceTone(e.target.value)}
                 className="w-full px-3.5 py-2.5 bg-[#090c10] border border-slate-800 focus:border-emerald-500 rounded-xl text-xs text-white focus:outline-none"
               >
-                <optgroup label="🎙️ Narrators & Documentaries">
+                <optgroup label="🇮🇳 Tamil (தமிழ்) & Regional Indian">
+                  <option value="ta-IN-PallaviNeural">ta-IN-PallaviNeural (Tamil - India Female, Friendly)</option>
+                  <option value="ta-IN-ValluvarNeural">ta-IN-ValluvarNeural (Tamil - India Male, Clear & Positive)</option>
+                  <option value="ta-LK-SaranyaNeural">ta-LK-SaranyaNeural (Tamil - Sri Lanka Female)</option>
+                  <option value="ta-LK-KumarNeural">ta-LK-KumarNeural (Tamil - Sri Lanka Male)</option>
+                  <option value="hi-IN-SwaraNeural">hi-IN-SwaraNeural (Hindi Female, Natural)</option>
+                  <option value="hi-IN-MadhurNeural">hi-IN-MadhurNeural (Hindi Male, Confident)</option>
+                  <option value="te-IN-ShrutiNeural">te-IN-ShrutiNeural (Telugu Female)</option>
+                  <option value="te-IN-MohanNeural">te-IN-MohanNeural (Telugu Male)</option>
+                  <option value="ml-IN-SobhanaNeural">ml-IN-SobhanaNeural (Malayalam Female)</option>
+                  <option value="ml-IN-MidhunNeural">ml-IN-MidhunNeural (Malayalam Male)</option>
+                  <option value="kn-IN-SapnaNeural">kn-IN-SapnaNeural (Kannada Female)</option>
+                  <option value="kn-IN-GaganNeural">kn-IN-GaganNeural (Kannada Male)</option>
+                  <option value="en-IN-NeerjaNeural">en-IN-NeerjaNeural (Indian English Female)</option>
+                  <option value="en-IN-PrabhatNeural">en-IN-PrabhatNeural (Indian English Male)</option>
+                </optgroup>
+
+                <optgroup label="🎙️ English Narrators & Documentaries">
                   <option value="en-US-ChristopherNeural">en-US-ChristopherNeural (Deep Documentary Narrator - Default)</option>
                   <option value="en-US-EricNeural">en-US-EricNeural (Warm Male Storyteller)</option>
                   <option value="en-GB-RyanNeural">en-GB-RyanNeural (BBC Documentary British Male)</option>
@@ -167,17 +220,12 @@ cd remotion && npx remotion still ${shortSlug.replace(/-/g, '')} ../shorts/${sho
                   <option value="en-US-EmmaMultilingualNeural">en-US-EmmaMultilingualNeural (Warm Professional Female)</option>
                   <option value="en-AU-NatNeural">en-AU-NatNeural (Australian Friendly Narrator)</option>
                   <option value="en-AU-WilliamNeural">en-AU-WilliamNeural (Australian Engaging Male)</option>
-                </optgroup>
-
-                <optgroup label="🌍 International & Regional Accents">
-                  <option value="en-IN-NeerjaNeural">en-IN-NeerjaNeural (Indian Natural Female)</option>
-                  <option value="en-IN-PrabhatNeural">en-IN-PrabhatNeural (Indian Confident Male)</option>
                   <option value="en-IE-ConnorNeural">en-IE-ConnorNeural (Irish Melodic Narrator)</option>
                   <option value="en-ZA-LukeNeural">en-ZA-LukeNeural (South African Clear Male)</option>
                 </optgroup>
               </select>
               <p className="text-[11px] text-slate-500 mt-1.5">
-                All 20+ voices stream free via Microsoft Edge Neural network without API keys.
+                All voices stream free via Microsoft Edge Neural network without API keys.
               </p>
             </div>
 
@@ -217,79 +265,160 @@ cd remotion && npx remotion still ${shortSlug.replace(/-/g, '')} ../shorts/${sho
 
         {/* Right Output Column (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
-          {/* Main Antigravity Agent Prompt Box */}
-          <div className="bg-[#0d1117] border border-slate-800 p-6 rounded-3xl shadow-xl flex flex-col">
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <h3 className="text-sm font-bold text-white">
-                  Ready-to-Use Antigravity Agent Prompt
-                </h3>
-              </div>
-              <button
-                onClick={() => copyToClipboard(antigravityPrompt, 'prompt')}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-semibold shadow-lg shadow-emerald-600/25 transition-all"
-              >
-                {copiedSection === 'prompt' ? (
-                  <>
-                    <Check className="w-3.5 h-3.5" />
-                    <span>Copied!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5" />
-                    <span>Copy Prompt</span>
-                  </>
-                )}
-              </button>
-            </div>
-
-            <p className="text-xs text-slate-400 mb-3">
-              Paste this prompt directly into your chat with Antigravity to autonomously generate the full video, audio, and beats:
-            </p>
-
-            <div className="relative bg-[#090c10] p-4 rounded-2xl border border-slate-800">
-              <pre className="text-xs text-emerald-200 whitespace-pre-wrap font-mono leading-relaxed select-all">
-                {antigravityPrompt}
-              </pre>
-            </div>
+          {/* Tab Selector: Antigravity vs ChatGPT / Claude vs CLI */}
+          <div className="flex items-center gap-2 p-1.5 bg-[#0d1117] border border-slate-800 rounded-2xl">
+            <button
+              onClick={() => setPromptMode('antigravity')}
+              className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-bold transition-all ${
+                promptMode === 'antigravity'
+                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Zap className="w-3.5 h-3.5 text-amber-300" />
+              <span>⚡ Antigravity Direct Prompt</span>
+            </button>
+            <button
+              onClick={() => setPromptMode('chatgpt')}
+              className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-bold transition-all ${
+                promptMode === 'chatgpt'
+                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Brain className="w-3.5 h-3.5 text-emerald-300" />
+              <span>🧠 ChatGPT / Claude AI Meta-Prompt</span>
+            </button>
+            <button
+              onClick={() => setPromptMode('cli')}
+              className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-bold transition-all ${
+                promptMode === 'cli'
+                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Terminal className="w-3.5 h-3.5 text-slate-300" />
+              <span>💻 CLI Commands</span>
+            </button>
           </div>
 
-          {/* Terminal CLI Execution Card */}
-          <div className="bg-[#0d1117] border border-slate-800 p-6 rounded-3xl shadow-xl">
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2">
-                <Terminal className="w-4 h-4 text-emerald-400" />
-                <h3 className="text-sm font-bold text-white">Manual CLI Workflow Commands</h3>
+          {/* Mode 1: Antigravity Direct Prompt */}
+          {promptMode === 'antigravity' && (
+            <div className="bg-[#0d1117] border border-slate-800 p-6 rounded-3xl shadow-xl flex flex-col animate-in fade-in">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <Zap className="w-4 h-4 text-amber-400" />
+                  <h3 className="text-sm font-bold text-white">
+                    Direct Antigravity Command Prompt
+                  </h3>
+                </div>
+                <button
+                  onClick={() => copyToClipboard(antigravityPrompt, 'antigravity')}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-semibold shadow-lg shadow-emerald-600/25 transition-all"
+                >
+                  {copiedSection === 'antigravity' ? (
+                    <>
+                      <Check className="w-3.5 h-3.5" />
+                      <span>Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Copy Prompt</span>
+                    </>
+                  )}
+                </button>
               </div>
-              <button
-                onClick={() => copyToClipboard(cliCommand, 'cli')}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 rounded-xl text-xs font-semibold border border-slate-800 transition-all"
-              >
-                {copiedSection === 'cli' ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Copied!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5" />
-                    <span>Copy Commands</span>
-                  </>
-                )}
-              </button>
-            </div>
 
-            <p className="text-xs text-slate-400 mb-3">
-              Direct terminal commands to generate free voiceover, detect beat transients, and render previews:
-            </p>
+              <p className="text-xs text-slate-400 mb-3">
+                Paste this prompt directly into Antigravity to autonomously build, voice, and render your short:
+              </p>
 
-            <div className="bg-[#090c10] p-4 rounded-2xl border border-slate-800">
-              <pre className="text-xs text-emerald-300 whitespace-pre-wrap font-mono leading-relaxed">
-                {cliCommand}
-              </pre>
+              <div className="relative bg-[#090c10] p-4 rounded-2xl border border-slate-800">
+                <pre className="text-xs text-emerald-200 whitespace-pre-wrap font-mono leading-relaxed select-all">
+                  {antigravityPrompt}
+                </pre>
+              </div>
             </div>
-          </div>
+          )}
+
+          {/* Mode 2: ChatGPT / Claude AI Meta-Prompt Template */}
+          {promptMode === 'chatgpt' && (
+            <div className="bg-[#0d1117] border border-slate-800 p-6 rounded-3xl shadow-xl flex flex-col animate-in fade-in">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <Brain className="w-4 h-4 text-emerald-400" />
+                  <h3 className="text-sm font-bold text-white">
+                    Meta-Prompt Template for ChatGPT / Claude
+                  </h3>
+                </div>
+                <button
+                  onClick={() => copyToClipboard(chatGptMetaPrompt, 'chatgpt')}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-semibold shadow-lg shadow-emerald-600/25 transition-all"
+                >
+                  {copiedSection === 'chatgpt' ? (
+                    <>
+                      <Check className="w-3.5 h-3.5" />
+                      <span>Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Copy Template</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              <p className="text-xs text-slate-400 mb-3">
+                Paste this template into <strong>ChatGPT</strong> or <strong>Claude AI</strong>. It will research your topic and output an ultra-detailed, timed 6-beat specification ready for Antigravity:
+              </p>
+
+              <div className="relative bg-[#090c10] p-4 rounded-2xl border border-slate-800 max-h-[480px] overflow-y-auto">
+                <pre className="text-xs text-slate-200 whitespace-pre-wrap font-mono leading-relaxed select-all">
+                  {chatGptMetaPrompt}
+                </pre>
+              </div>
+            </div>
+          )}
+
+          {/* Mode 3: Terminal CLI Execution Card */}
+          {promptMode === 'cli' && (
+            <div className="bg-[#0d1117] border border-slate-800 p-6 rounded-3xl shadow-xl animate-in fade-in">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <Terminal className="w-4 h-4 text-emerald-400" />
+                  <h3 className="text-sm font-bold text-white">Manual CLI Workflow Commands</h3>
+                </div>
+                <button
+                  onClick={() => copyToClipboard(cliCommand, 'cli')}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-slate-200 rounded-xl text-xs font-semibold border border-slate-800 transition-all"
+                >
+                  {copiedSection === 'cli' ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Copy Commands</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              <p className="text-xs text-slate-400 mb-3">
+                Direct terminal commands to generate free voiceover, detect beat transients, and render previews:
+              </p>
+
+              <div className="bg-[#090c10] p-4 rounded-2xl border border-slate-800">
+                <pre className="text-xs text-emerald-300 whitespace-pre-wrap font-mono leading-relaxed">
+                  {cliCommand}
+                </pre>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
