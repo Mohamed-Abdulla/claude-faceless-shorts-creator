@@ -33,6 +33,11 @@ IDEAS.md          the TSX-shorts idea bank + niche ranking
 
 ## Conventions (hard rules)
 
+- **CRITICAL Git Workflow Policy (NEVER VIOLATE):**
+  - **NEVER push directly to `main` branch under any circumstances.**
+  - **Always create a separate feature/fix/chore branch** (e.g. `feature/<name>`, `fix/<name>`, `chore/<name>`).
+  - **Push commits to that branch and raise a Pull Request (PR)** using `gh pr create`.
+  - **NEVER merge into `main` directly.** Merging to `main` is strictly forbidden until the user explicitly commands: *"merge to main"*. Always ask first.
 - **Run everything from the repo root.** Tools resolve engine paths (media/library, catalogs)
   against their own location, but project paths (`shorts/...`) against the CWD.
 - **Python:** any Python 3.10+ — the core pipeline is stdlib-only. Only vox layer production
