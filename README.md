@@ -13,6 +13,25 @@ Every track shares the same backbone: **Word-exact synced captions**, free neura
 
 ---
 
+## 🎨 Faceless Studio Web UI (Zero-Backend Manager)
+
+A dedicated **Vite + React + Tailwind + React Router DOM** management studio with zero backend complexity. It uses direct filesystem mapping through a built-in Vite middleware plugin.
+
+```bash
+# Launch Faceless Studio
+cd studio
+npm run dev
+# Open http://localhost:5173 in your browser
+```
+
+### Features:
+- 📱 **Interactive 9:16 Video Gallery**: Stream and inspect all rendered shorts across `shorts/`, `ai-shorts/`, and `vox-shorts/` with HTTP range scrubbing.
+- ✏️ **Local File Operations**: Directly rename or delete shorts and videos from the web interface.
+- 📜 **Script & Beats Inspector**: Preview `script.md` content and `beats.json` timings side-by-side with the video.
+- ✨ **Custom Prompt Studio**: Generate tailored prompts for Antigravity or manual CLI commands for any niche (Kids Rhymes, Dev Tips, Vox Documentaries, AI Stories).
+
+---
+
 ## ⚡ Antigravity & 100% Free Quickstart
 
 This workspace has been pre-configured for **Google Antigravity** with **100% Free Edge-TTS Voiceovers** (no credit card or ElevenLabs API key required).
