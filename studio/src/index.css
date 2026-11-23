@@ -67,3 +67,12 @@ code, pre {
 ::-webkit-scrollbar-thumb:hover {
   background: #10b981;
 }
+
+/* Portrait Fullscreen Lock: Ensures native video fullscreen at bottom never stretches */
+video:fullscreen,
+video:-webkit-full-screen {
+  object-fit: contain !important;
+  background-color: #000000 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+}

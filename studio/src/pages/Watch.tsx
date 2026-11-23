@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
   ArrowLeft,
@@ -10,8 +10,6 @@ import {
   HardDrive,
   AlertTriangle,
   FolderOpen,
-  Maximize,
-  Minimize,
   Sparkles,
   Share2
 } from 'lucide-react';
@@ -33,27 +31,6 @@ export const Watch: React.FC = () => {
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [renameTarget, setRenameTarget] = useState<{ path: string; name: string } | null>(null);
-
-  // Fullscreen state
-  const playerContainerRef = useRef<HTMLDivElement>(null);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-
-  useEffect(() => {
-    const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
-    };
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
-    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
-  }, []);
-
-  const handleTogglePortraitFullscreen = () => {
-    if (!playerContainerRef.current) return;
-    if (!document.fullscreenElement) {
-      playerContainerRef.current.requestFullscreen().catch(() => {});
-    } else {
-      document.exitFullscreen().catch(() => {});
-    }
-  };
 
   const loadData = async () => {
     try {
@@ -146,38 +123,18 @@ export const Watch: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column: True 9:16 Portrait Player (5 cols) */}
         <div className="lg:col-span-5 flex flex-col items-center">
-          {/* Portrait Container - guarantees 9:16 aspect ratio in fullscreen with pillarbox black bars */}
-          <div
-            ref={playerContainerRef}
-            className={`relative w-full max-w-[360px] aspect-[9/16] bg-black rounded-3xl overflow-hidden shadow-2xl border border-slate-800/80 flex items-center justify-center ${
-              isFullscreen ? 'max-w-none w-screen h-screen rounded-none border-none' : ''
-            }`}
-          >
+          {/* Portrait Container: 9:16 vertical ratio locked */}
+          <div className="relative w-full max-w-[360px] aspect-[9/16] bg-black rounded-3xl overflow-hidden shadow-2xl border border-slate-800/80 flex items-center justify-center">
             {activeVideo ? (
-              <>
-                <video
-                  key={activeVideo.path}
-                  src={api.getMediaUrl(activeVideo.path)}
-                  controls
-                  autoPlay
-                  loop
-                  playsInline
-                  className="w-full h-full object-contain mx-auto"
-                  style={{
-                    maxHeight: isFullscreen ? '100vh' : undefined,
-                    maxWidth: isFullscreen ? 'calc(100vh * 9 / 16)' : undefined,
-                  }}
-                />
-
-                {/* Explicit Portrait Mode Fullscreen Toggle */}
-                <button
-                  onClick={handleTogglePortraitFullscreen}
-                  className="absolute top-3 right-3 z-30 p-2 text-white bg-black/70 hover:bg-black/90 border border-white/20 rounded-xl backdrop-blur-md transition-all shadow-lg"
-                  title={isFullscreen ? 'Exit Portrait Fullscreen' : 'Fullscreen (Locked 9:16 Portrait)'}
-                >
-                  {isFullscreen ? <Minimize className="w-4 h-4" /> : <Maximize className="w-4 h-4" />}
-                </button>
-              </>
+              <video
+                key={activeVideo.path}
+                src={api.getMediaUrl(activeVideo.path)}
+                controls
+                autoPlay
+                loop
+                playsInline
+                className="w-full h-full object-contain mx-auto"
+              />
             ) : (
               <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center text-slate-600">
                 <FolderOpen className="w-12 h-12 mb-3 stroke-1" />
