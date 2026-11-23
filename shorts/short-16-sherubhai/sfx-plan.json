@@ -1,0 +1,71 @@
+{
+  "short": "short-16-sherubhai",
+  "render": {
+    "preview": "shorts/short-16-sherubhai/output/short-16-voiced.mp4",
+    "out": "shorts/short-16-sherubhai/output/short-16-sherubhai-final.mp4",
+    "end_s": 32,
+    "duck": true
+  },
+  "events": [
+    {
+      "at_s": 0.5,
+      "sfx_id": "whoosh-soft",
+      "gain_db": -2,
+      "cue": "Entrance spotlight whoosh"
+    },
+    {
+      "at_s": 0.8,
+      "sfx_id": "impact-deep-soft",
+      "gain_db": 0,
+      "cue": "Sheru Bhai impact thud"
+    },
+    {
+      "at_s": 5.4,
+      "sfx_id": "pop-reveal",
+      "gain_db": -3,
+      "cue": "Lion head badge pop"
+    },
+    {
+      "at_s": 6.8,
+      "sfx_id": "pop-reveal",
+      "gain_db": -3,
+      "cue": "White tuxedo sheen pop"
+    },
+    {
+      "at_s": 8.5,
+      "sfx_id": "chime-reward",
+      "gain_db": -4,
+      "cue": "Gold chain bling sparkle"
+    },
+    {
+      "at_s": 12.2,
+      "sfx_id": "impact-soft",
+      "gain_db": -1,
+      "cue": "Auction gavel slam"
+    },
+    {
+      "at_s": 14.5,
+      "sfx_id": "chime-reward",
+      "gain_db": -3,
+      "cue": "Golden VIP cheque reveal"
+    },
+    {
+      "at_s": 18.6,
+      "sfx_id": "ui-toggle-on",
+      "gain_db": -2,
+      "cue": "ATM system crash glitch"
+    },
+    {
+      "at_s": 23.4,
+      "sfx_id": "whoosh-wind",
+      "gain_db": -3,
+      "cue": "Royal throne power aura"
+    },
+    {
+      "at_s": 28.2,
+      "sfx_id": "whoosh-reverse",
+      "gain_db": -2,
+      "cue": "Camera paparazzi loop whoosh"
+    }
+  ]
+}

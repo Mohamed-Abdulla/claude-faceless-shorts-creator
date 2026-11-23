@@ -13,6 +13,53 @@ export function generatePublishingKit(project: ShortProject): PublishingData {
   const name = project.name.toLowerCase();
   const script = project.script || '';
 
+  // 0. Sheru Bhai Viral Meme Trend (Tamil)
+  if (name.includes('sheru') || name.includes('bhai')) {
+    return {
+      titles: [
+        { label: '🔥 High Curiosity Hook', text: 'யார் இந்த ஷேரு பாய்? Who is Sheru Bhai? 🦁👑' },
+        { label: '⚡ Punchy & Viral', text: 'இன்டர்நெட் முழுக்க இவரோட கெத்து தான் பேசுது! 🔥' },
+        { label: '🔍 Search / SEO Friendly', text: 'Sheru Bhai Viral Trend Explained in Tamil | AI Lion Meme' },
+      ],
+      youtubeDescription: `யார் இந்த ஷேரு பாய்? இன்டர்நெட் முழுக்க இவரோட கெத்து தான் இப்ப ட்ரெண்டிங்! 🦁👑
+கோல்டன் சிங்கம் தலை, வெள்ள த்ரீ-பீஸ் சூட், தங்க செயின், கருப்பு கண்ணாடி... மாஸான என்ட்ரி! 
+
+பெரிய ஆக்ஷன் ஹால்-ல எல்லாரும் கோடிகள்ல பிட் பண்ணப்போ, செக் புக் எடுத்து ஹாலையே வாங்குன அல்டிமேட் பாஸ்! பேங்க் ஏடிஎம் மிஷினே ஹேங் ஆகுற அளவுக்கு காசு!
+
+Drop a 🦁 in the comments if you have that Sheru Bhai Aura! 👇
+
+#Shorts #SheruBhai #TamilReels #SheruBhaiMeme #TamilShorts #Aura`,
+      youtubeTags: ['#Shorts', '#SheruBhai', '#TamilReels', '#SheruBhaiMeme', '#TamilShorts'],
+      instagramCaption: `யார் இந்த ஷேரு பாய்? 🦁🔥
+இன்டர்நெட் முழுக்க இவரோட கெத்து தான் இப்ப ட்ரெண்டிங்!
+
+கோல்டன் சிங்கம் தலை, வெள்ள த்ரீ-பீஸ் சூட், ஹெவி தங்க செயின், கருப்பு கண்ணாடி... மாஸான என்ட்ரி! ஆக்ஷன் ஹாலையே செக் எழுதி வாங்குன அல்டிமேட் பாஸ்! 💥
+
+Tag your friends who need that Sheru Bhai Aura! 👑
+.
+.
+#sherubhai #tamilreels #viralreels #tamilmemes #sherubhaireels #tamilshorts #lionking #auraflex #billionairemindset #reelsindia #tamilcinema #trendingsongs`,
+      instagramTags: ['#sherubhai', '#tamilreels', '#viralreels', '#tamilmemes', '#sherubhaireels'],
+      allHashtags: [
+        '#Shorts',
+        '#SheruBhai',
+        '#SheruBhaiMeme',
+        '#TamilReels',
+        '#TamilShorts',
+        '#ViralReels',
+        '#TamilMemes',
+        '#AuraFlex',
+        '#LionBoss',
+        '#DesiReels',
+        '#ReelsIndia',
+        '#TamilCinema',
+        '#MemeTrend',
+        '#TrendingNow',
+        '#ExplorePage',
+      ],
+    };
+  }
+
   // 1. Animals / Pets (short-15-animals)
   if (name.includes('animal') || name.includes('dog') || name.includes('cat')) {
     return {

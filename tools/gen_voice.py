@@ -169,6 +169,23 @@ def tts_line_edge(voice, text, out_path):
     audio, words = asyncio.run(_synth())
     with open(out_path, "wb") as f:
         f.write(audio)
+
+    # Fallback: if edge-tts does not emit WordBoundary (e.g. Tamil, Telugu, Hindi),
+    # interpolate proportional word boundaries from audio duration and token lengths
+    if not words and clean_text.strip():
+        dur = probe_duration(out_path)
+        token_words = clean_text.strip().split()
+        total_len = sum(len(w) for w in token_words) or 1
+        curr = 0.0
+        for w in token_words:
+            w_dur = (len(w) / total_len) * dur
+            words.append({
+                "w": w,
+                "start": round(curr, 3),
+                "end": round(curr + w_dur, 3)
+            })
+            curr += w_dur
+
     with open(out_path + ".words.json", "w", encoding="utf-8") as f:
         json.dump(words, f, ensure_ascii=False)
 

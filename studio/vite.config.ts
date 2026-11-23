@@ -60,7 +60,7 @@ function facelessStudioPlugin(): Plugin {
                   try {
                     const raw = await fs.promises.readFile(beatsPath, 'utf-8');
                     beatsJson = JSON.parse(raw);
-                    beatsCount = beatsJson.beats ? beatsJson.beats.length : 0;
+                    beatsCount = beatsJson.vo ? beatsJson.vo.length : (beatsJson.beats ? beatsJson.beats.length : 0);
                   } catch {
                     // ignore json error
                   }

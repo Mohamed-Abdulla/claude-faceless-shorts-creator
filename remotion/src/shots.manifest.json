@@ -64,6 +64,14 @@
   "transparent": false
  },
  {
+  "id": "Short16SheruBhai",
+  "durationInSeconds": 32,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
   "id": "Short2Math",
   "durationInSeconds": 42,
   "fps": 30,
